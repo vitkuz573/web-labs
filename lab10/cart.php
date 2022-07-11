@@ -32,39 +32,44 @@ require_once 'db.php';
       </div>
     </nav>
 
-    <?php
-    $total_cost = 0;
-
-    foreach (explode(',', $_COOKIE['cart']) as $item)
-    {
-      $products = $dbh->query("SELECT * FROM items WHERE id = $item");
-
-      foreach ($products as $product) {
-    ?>
-
-    <div class="flex w-full h-48 rounded overflow-hidden shadow-lg my-2 bg-white">
-      <div>
-        <img class="h-48" src="assets/images/<?php echo $product['image']; ?>" alt="<?php echo $product['name'] ?>">
-      </div>
-      <div class="px-6 py-4">
-        <div class="font-bold text-xl mb-2"><?php echo $product['name']; ?></div>
-        <p class="text-grey-darker text-base"><?php echo $product['description']; ?></p>
-        <p class="text-grey-darker text-base"><?php echo $product['cost']; ?> ₽</p>
-      </div>
-    </div>
-
-    <?php
-    $total_cost = $total_cost + $product['cost'];
+    <?php $total_cost = 0; ?>
+    
+    <div class="p-10">
+      <?php
+      if (isset($_COOKIE['cart']) && !empty($_COOKIE['cart'])) {
+        foreach (explode(',', $_COOKIE['cart']) as $item)
+        {
+          $products = $dbh->query("SELECT * FROM items WHERE id = $item");
+  
+          foreach ($products as $product) {
+      ?>
+          <div class="relative flex w-full h-36 rounded overflow-hidden shadow-lg my-2 bg-white">
+            <div>
+              <img class="h-48" src="assets/images/<?php echo $product['image']; ?>" alt="<?php echo $product['name'] ?>">
+            </div>
+            <div class="px-6 py-4">
+              <div class="font-bold text-xl mb-2"><?php echo $product['name']; ?></div>
+              <p class="text-grey-darker text-base"><?php echo $product['description']; ?></p>
+              <p class="text-grey-darker text-base"><?php echo $product['cost']; ?> ₽</p>
+            </div>
+            <div class="absolute inset-y-0 right-0">
+              <button type="button" onclick="removeFromCart(<?php echo $product['id'] ?>)" class="h-full inline-block px-6 py-2.5 bg-red-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-red-700 hover:shadow-lg focus:bg-red-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Удалить</button>
+            </div>
+          </div>
+      <?php
+            $total_cost = $total_cost + $product['cost'];
+          }
+        }
       }
-    }
-    ?>
+      ?>
 
-    <div class="relative flex w-full rounded overflow-hidden shadow-lg my-2 bg-white">
-      <div class="px-6 py-4">
-        Итого: <?php echo $total_cost; ?> ₽
-      </div>
-      <div class="absolute inset-y-0 right-0">
-        <button type="button" class="h-full inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Перейти к оплате</button>
+      <div class="relative flex w-full rounded overflow-hidden shadow-lg my-2 bg-white">
+        <div class="px-6 py-4">
+          Итого: <?php echo $total_cost; ?> ₽
+        </div>
+        <div class="absolute inset-y-0 right-0">
+          <button type="button" class="h-full inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Перейти к оплате</button>
+        </div>
       </div>
     </div>
 

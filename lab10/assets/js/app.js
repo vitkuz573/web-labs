@@ -1,6 +1,6 @@
-function addToCart(item_id) {
-    let cart = JSON.parse(sessionStorage.getItem('cart'))
+let cart = JSON.parse(sessionStorage.getItem('cart'))
 
+function addToCart(item_id) {
     if(!cart) {
         cart = []
     }
@@ -8,6 +8,13 @@ function addToCart(item_id) {
     cart.push(item_id);
 
     sessionStorage.setItem('cart', JSON.stringify(cart))
+
+    document.cookie = "cart=" + cart
+}
+
+function removeFromCart(item_id) {
+    JSON.splice(cart.indexOf(item_id), 1)
+    location.reload()
 
     document.cookie = "cart=" + cart
 }
