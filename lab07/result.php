@@ -21,9 +21,7 @@ if ($_POST) {
             } else {
                 $result = $first_number / $second_number;
             }
-    
             break;
-            
         default:
             $result = 'Ошибка: Введен нестандартный оператор ' . '"' . $operator . '"' . '!';
     }
