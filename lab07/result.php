@@ -7,14 +7,17 @@ if ($_POST) {
 
     switch($operator) {
         case '+':
-            $result = $first_number + $second_number; break;
+            $result = $first_number + $second_number;
+            break;
         case '-':
-            $result = $first_number - $second_number; break;
+            $result = $first_number - $second_number;
+            break;
         case '*':
-            $result = $first_number * $second_number; break;
+            $result = $first_number * $second_number;
+            break;
         case '/':
             if($second_number == 0) {
-                $result = 'Делить на ноль нельзя!';
+                $result = 'Ошибка: Деление на ноль невозможно!';
             } else {
                 $result = $first_number / $second_number;
             }
