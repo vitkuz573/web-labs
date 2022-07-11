@@ -1,0 +1,46 @@
+body {
+    background-image: url("../images/background.jpg");
+}
+
+.h2 {
+    font-family: 'Times New Roman';
+}
+
+.text {
+    font-family: serif;
+    text-align: center;
+}
+
+.t1 {
+    border: 5px solid #0e3b9a;
+}
+
+.t2 {
+    border: 5px solid #000000;
+    text-align: center;
+}
+
+.link {
+    font-family: Calibri;
+    text-decoration: none;
+}
+
+.d1 {
+    position: absolute;
+    margin-right: auto;
+    margin-left: auto;
+    left: 0;
+    right: 0;
+}
+
+a:visited {
+    color: #ff0000;
+}
+
+a:hover {
+    color: #900060;
+}
+
+img {
+    width: 250px;
+}
