@@ -1,0 +1,46 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <title>Калькулятор</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <script src="assets/js/tailwind.js"></script>
+    <script src="assets/js/jquery-3.6.0.min.js"></script>
+    <script src="assets/js/app.js"></script>
+<body class="bg-slate-400">
+  <h1 class="py-3 text-center text-3xl">Калькулятор</h1>
+
+  <div class="p-10">
+    <form id="calc_form">
+      <div class="mb-6">
+        <input type="number" id="first_number" name="first_number" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required>
+      </div>
+
+      <div class="mb-6">
+        <select id="operator" name="operator" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+          <option value="+">+</option>
+          <option value="-">-</option>
+          <option value="*">*</option>
+          <option value="/">/</option>
+        </select>
+      </div>
+  
+      <div class="mb-6">
+        <input type="number" id="second_number" name="second_number" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required>
+      </div>
+
+      <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center">Вычислить</button>
+    </form>
+
+    <br>
+
+    <div class="mb-6">
+      <input type="text" id="result" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" readonly>
+    </div>
+  </div>
+
+</body>
+</html>
+
+

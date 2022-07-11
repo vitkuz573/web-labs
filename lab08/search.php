@@ -25,21 +25,21 @@ if ($_POST) {
     } else {
         $abiturients = $dbh->query("SELECT * FROM abiturients WHERE first_name = '$fname' AND last_name = '$lname' AND middle_name IS NULL");
     }
-} else {
-    die();
-}
 
-if ($abiturients->rowCount() > 0) {
-    foreach ($abiturients as $abiturient) {
-        echo 'Фамилия: ' . $abiturient['last_name'] . '<br>';
-        echo 'Имя: ' . $abiturient['first_name'] . '<br>';
+    if ($abiturients->rowCount() > 0) {
+        foreach ($abiturients as $abiturient) {
+            echo 'Фамилия: ' . $abiturient['last_name'] . '<br>';
+            echo 'Имя: ' . $abiturient['first_name'] . '<br>';
+        
+            if ($mname != null) {
+                echo 'Отчество: ' . $abiturient['middle_name'] . '<br>';
+            }
     
-        if ($mname != null) {
-            echo 'Отчество: ' . $abiturient['middle_name'] . '<br>';
+            echo 'Регистрационный номер: ' . $abiturient['reg_number'];
         }
-
-        echo 'Регистрационный номер: ' . $abiturient['reg_number'];
+    } else {
+        echo 'Абитуриент не найден!';
     }
 } else {
-    echo 'Абитуриент не найден!';
+    die();
 }
