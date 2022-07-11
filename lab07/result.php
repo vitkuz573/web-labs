@@ -25,7 +25,7 @@ if ($_POST) {
             break;
             
         default:
-            return false;
+            $result = 'Ошибка: Введен нестандартный оператор ' . '"' . $operator . '"' . '!';
     }
     
     echo $result;
