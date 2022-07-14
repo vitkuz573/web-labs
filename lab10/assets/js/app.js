@@ -13,7 +13,7 @@ function addToCart(item_id) {
 }
 
 function removeFromCart(item_id) {
-    JSON.splice(cart.indexOf(item_id), 1)
+    cart.
     location.reload()
 
     document.cookie = "cart=" + cart
