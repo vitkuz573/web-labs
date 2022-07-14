@@ -4,9 +4,11 @@
 	<title>Интернет-магазин</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" src="assets/css/jquery-ui.min.css" />
 	<script src="assets/js/tailwind.js"></script>
 	<script src="assets/js/jquery-3.6.0.min.js"></script>
 	<script src="assets/js/jquery.cookie.js"></script>
+	<script src="assets/js/jquery-ui.min.js"></script>
 	<script src="assets/js/app.js"></script>
 </head>
 
@@ -26,6 +28,11 @@
 						<a href="#" class="py-4 px-2 text-gray-500 font-semibold hover:text-green-500 transition duration-300">О нас</a>
 						<a href="#" class="py-4 px-2 text-gray-500 font-semibold hover:text-green-500 transition duration-300">Контакты</a>
 						<a href="cart.php" class="py-4 px-2 text-gray-500 font-semibold hover:text-green-500 transition duration-300">Корзина</a>
+						<div>
+							<form>
+								<input id="search" name="search" placeholder="Поиск" />
+							</form>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -33,10 +40,10 @@
 	</nav>
 	
 	<div class="flex flex-wrap justify-center -m-2">
-		{foreach $dbh->query('SELECT * FROM items') as $item}
+		{foreach DB::getAll('SELECT * FROM items') as $item}
 			<div class="p-4">
 				<div class="rounded-lg shadow-lg bg-white max-w-sm">
-					<a href="#">
+					<a href="catalog/{$item['page']}">
 						<img class="rounded-t-lg" src="assets/images/{$item['image']}" alt="{$item['name']}"/>
 					</a>
 					<div class="p-6">
