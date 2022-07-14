@@ -1,10 +1,14 @@
 ﻿<?php
 
 use Envms\FluentPDO\Query;
+use Dotenv\Dotenv;
 
 require_once 'vendor/autoload.php';
 
-$dbh = new Query(new PDO('mysql:dbname=lab10', 'root', 'root'));
+$dotenv = Dotenv::createImmutable(__DIR__);
+$dotenv->load();
+
+$dbh = new Query(new PDO('mysql:dbname=' . $_ENV['DB_NAME'], $_ENV['DB_USER'], $_ENV['DB_PASSWORD']));
 
 $smarty = new Smarty();
 $smarty->assign('items', $dbh->from('items'));
