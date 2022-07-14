@@ -1,18 +1,13 @@
-﻿<!DOCTYPE html>
-<html lang="ru">
-<head>
-	<title>Интернет-магазин</title>
-	<meta name="description" content="">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+﻿{extends file="layout.tpl"}
+{block name=title}Интернет-магазин{/block}
+{block name=css}
 	<link rel="stylesheet" src="assets/css/jquery-ui.min.css" />
-	<script src="assets/js/tailwind.js"></script>
-	<script src="assets/js/jquery-3.6.0.min.js"></script>
+{/block}
+{block name=js}
 	<script src="assets/js/jquery.cookie.js"></script>
 	<script src="assets/js/jquery-ui.min.js"></script>
-	<script src="assets/js/app.js"></script>
-</head>
-
-<body class="bg-slate-400">
+{/block}
+{block name=body}
 	<nav class="bg-white shadow-lg">
 		<div class="max-w-6xl mx-auto px-4">
 			<div class="flex justify-between">
@@ -56,5 +51,4 @@
 			</div>
         {/foreach}
 		</div>
-	</body>
-</html>
+{/block}
