@@ -40,7 +40,7 @@
 	</nav>
 	
 	<div class="flex flex-wrap justify-center -m-2">
-		{foreach DB::getAll('SELECT * FROM items') as $item}
+		{foreach $items as $item}
 			<div class="p-4">
 				<div class="rounded-lg shadow-lg bg-white max-w-sm">
 					<a href="catalog/{$item['page']}">
