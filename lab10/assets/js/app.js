@@ -21,9 +21,9 @@ function removeFromCart(item_id) {
 
 $(function() {
     $('#search').autocomplete({
-        source: 'search.php',
+        source: document.location.origin  + '/lab10/search',
         select: function (event, ui) {
-            window.location = document.location.origin  + '/catalog/' + encodeURIComponent(ui.item.value)
+            window.location = document.location.origin  + '/lab10/product/' + encodeURIComponent(ui.item.value)
         }
     })
 })

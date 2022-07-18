@@ -1,5 +1,11 @@
 ﻿{extends file="layout.tpl"}
 {block name=title}Корзина{/block}
+{block name=js}
+	<script src="assets/js/tailwind.js"></script>
+    <script src="assets/js/jquery-3.6.0.min.js"></script>
+    <script src="assets/js/app.js"></script>
+{/block}
+
 {block name=body}
 	<nav class="bg-white shadow-lg">
 		<div class="max-w-6xl mx-auto px-4">
@@ -12,10 +18,10 @@
 						</a>
 					</div>
 					<div class="hidden md:flex items-center space-x-1">
-						<a href="index.php" class="py-4 px-2 text-gray-500 font-semibold hover:text-green-500 transition duration-300">Главная</a>
+						<a href="product" class="py-4 px-2 text-gray-500 font-semibold hover:text-green-500 transition duration-300">Главная</a>
 						<a href="#" class="py-4 px-2 text-gray-500 font-semibold hover:text-green-500 transition duration-300">О нас</a>
 						<a href="#" class="py-4 px-2 text-gray-500 font-semibold hover:text-green-500 transition duration-300">Контакты</a>
-						<a href="cart.php" class="py-4 px-2 text-green-500 border-b-4 border-green-500 font-semibold">Корзина</a>
+						<a href="cart" class="py-4 px-2 text-green-500 border-b-4 border-green-500 font-semibold">Корзина</a>
 					</div>
 				</div>
 			</div>

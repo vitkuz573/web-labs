@@ -1,15 +1,51 @@
-﻿<?php
+<?php
 
+require_once __DIR__ . '/vendor/autoload.php';
+
+use Symfony\Component\Config\FileLocator;
+use Symfony\Component\Routing\Loader\YamlFileLoader;
+use Symfony\Component\Routing\RequestContext;
+use Symfony\Component\Routing\Matcher\UrlMatcher;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Exception\ResourceNotFoundException;
+use Symfony\Component\HttpKernel\Controller;
 use Envms\FluentPDO\Query;
 use Dotenv\Dotenv;
 
-require_once 'vendor/autoload.php';
+// Загрузка .env
+Dotenv::createImmutable(__DIR__)->load();
 
-$dotenv = Dotenv::createImmutable(__DIR__);
-$dotenv->load();
+// Создание экземпляра класса PDO для работы с БД
+$pdo = new PDO('mysql:dbname=' . $_ENV['DB_NAME'], $_ENV['DB_USER'], $_ENV['DB_PASSWORD']);
 
-$dbh = new Query(new PDO('mysql:dbname=' . $_ENV['DB_NAME'], $_ENV['DB_USER'], $_ENV['DB_PASSWORD']));
+// Инициализация FluentPDO
+$dbh = new Query($pdo);
 
+// Инициализация шаблонизатора Smarty
 $smarty = new Smarty();
-$smarty->assign('items', $dbh->from('items'));
-$smarty->display('index.tpl');
+
+// Маршрутизация с использованием YML файла в качестве хранилища маршрутов
+$locator = new FileLocator([__DIR__]);
+$loader = new YamlFileLoader($locator);
+$routes = $loader->load('config/routes.yml');
+
+$context = new RequestContext();
+$request = Request::createFromGlobals();
+$context->fromRequest($request);
+$matcher = new UrlMatcher($routes, $context);
+$controllerResolver = new Controller\ControllerResolver();
+$argumentResolver = new Controller\ArgumentResolver();
+
+try {
+    $matcher = $matcher->match($request->getPathInfo());
+    $request->attributes->add($matcher);
+
+    $controller = $controllerResolver->getController($request);
+    $arguments = $argumentResolver->getArguments($request, $controller);
+
+    call_user_func_array($controller, $arguments);
+} catch (ResourceNotFoundException $e) {
+    $response = new Response('Not found!', Response::HTTP_NOT_FOUND);
+    require_once 'errors/404.php';
+}

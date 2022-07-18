@@ -1,0 +1,19 @@
+product_index:
+    path: /product
+    controller: App\Controller\ProductController::index
+
+product_show:
+    path: /product/{id}
+    controller: App\Controller\ProductController::show
+
+cart_index:
+    path: /cart
+    controller: App\Controller\CartController::index
+
+auth_index:
+    path: /auth
+    controller: App\Controller\AuthController::index
+
+search:
+    path: /search
+    controller: App\Controller\SearchController::search

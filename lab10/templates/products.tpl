@@ -4,6 +4,9 @@
 	<link rel="stylesheet" src="assets/css/jquery-ui.min.css" />
 {/block}
 {block name=js}
+	<script src="assets/js/tailwind.js"></script>
+    <script src="assets/js/jquery-3.6.0.min.js"></script>
+    <script src="assets/js/app.js"></script>
 	<script src="assets/js/jquery.cookie.js"></script>
 	<script src="assets/js/jquery-ui.min.js"></script>
 {/block}
@@ -19,10 +22,10 @@
 						</a>
 					</div>
 					<div class="hidden md:flex items-center space-x-1">
-						<a href="index.php" class="py-4 px-2 text-green-500 border-b-4 border-green-500 font-semibold">Главная</a>
+						<a href="product" class="py-4 px-2 text-green-500 border-b-4 border-green-500 font-semibold">Главная</a>
 						<a href="#" class="py-4 px-2 text-gray-500 font-semibold hover:text-green-500 transition duration-300">О нас</a>
 						<a href="#" class="py-4 px-2 text-gray-500 font-semibold hover:text-green-500 transition duration-300">Контакты</a>
-						<a href="cart.php" class="py-4 px-2 text-gray-500 font-semibold hover:text-green-500 transition duration-300">Корзина</a>
+						<a href="cart" class="py-4 px-2 text-gray-500 font-semibold hover:text-green-500 transition duration-300">Корзина</a>
 						<div>
 							<form>
 								<input id="search" name="search" placeholder="Поиск" />
@@ -38,7 +41,7 @@
 		{foreach $items as $item}
 			<div class="p-4">
 				<div class="rounded-lg shadow-lg bg-white max-w-sm">
-					<a href="catalog/{$item.page}">
+					<a href="product/{$item.id}">
 						<img class="rounded-t-lg" src="assets/images/{$item.image}" alt="{$item.name}"/>
 					</a>
 					<div class="p-6">
