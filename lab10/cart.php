@@ -8,5 +8,5 @@ if (isset($_COOKIE['cart']) && !empty($_COOKIE['cart'])) {
 }
 
 $smarty->assign('capsule', $capsule);
-$smarty->assign('total_cost', 0);
+$smarty->assign('total_price', 0);
 $smarty->display('cart.tpl');
