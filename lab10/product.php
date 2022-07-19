@@ -1,7 +1,7 @@
 <?php
 
-global $dbh;
 global $smarty;
+global $capsule;
 
-$smarty->assign('dbh', $dbh);
+$smarty->assign('capsule', $capsule);
 $smarty->display('product.tpl');

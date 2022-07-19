@@ -29,19 +29,20 @@
 			</div>
 		</div>
 	</nav>
-    {foreach $dbh->from('items')->where('id = ?', array_pop(explode('/', $smarty.server.REQUEST_URI))) as $item}
-        <div class="flex">
-            <div>
-                <img src="../assets/images/{$item.image}" alt="{$item.name}">
-            </div>
-            <div>
-                <div>
-                    <h1 class="text-3xl">{$item.name}</h1>
-                </div>
-                <div>
-                    <p>{$item.description}</p>
-                </div>
-            </div>
-        </div>
-    {/foreach}
+
+	{$item = $capsule::table('items')->where('id', '=', array_pop(explode('/', $smarty.server.REQUEST_URI)))->get()->first()}
+	
+	<div class="flex">
+		<div>
+			<img src="../assets/images/{$item->image}" alt="{$item->name}">
+		</div>
+		<div>
+			<div>
+				<h1 class="text-3xl">{$item->name}</h1>
+			</div>
+			<div>
+				<p>{$item->description}</p>
+			</div>
+		</div>
+	</div>
 {/block}

@@ -6,15 +6,15 @@ class SearchController
 {
     public function search()
     {
-        global $dbh;
+        global $capsule;
 
         $result = [];
 
         if (isset($_GET['term'])) {
-            foreach ($dbh->from('items')->select(['id', 'name'])->where("name LIKE '%{$_GET['term']}%'") as $item) {
+            foreach ($capsule->table('items')->select(['id', 'name'])->where('name', 'LIKE', "%{$_GET['term']}%")->get() as $item) {
                 array_push($result, [
-                    'value' => $item['id'],
-                    'label' => $item['name']
+                    'value' => $item->id,
+                    'label' => $item->name
                 ]);
             }
         } else {
