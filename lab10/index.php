@@ -20,8 +20,9 @@ $dotenv->load(__DIR__ . '/.env');
 // Создание экземпляра класса PDO для работы с БД
 $pdo = new PDO('mysql:dbname=' . $_ENV['DB_NAME'], $_ENV['DB_USER'], $_ENV['DB_PASSWORD']);
 
-// Eloquent
+// Инициализация Eloquent
 $capsule = new Capsule();
+
 $capsule->addConnection([
     'driver' => 'mysql',
     'host' => $_ENV['DB_HOST'],

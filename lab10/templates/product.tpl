@@ -30,7 +30,7 @@
 		</div>
 	</nav>
 
-	{$item = $capsule::table('items')->where('id', '=', array_pop(explode('/', $smarty.server.REQUEST_URI)))->get()->first()}
+	{$item = \App\Models\Product::whereId(array_pop(explode('/', $smarty.server.REQUEST_URI)))->first()}
 	
 	<div class="flex">
 		<div>

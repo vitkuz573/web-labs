@@ -31,7 +31,7 @@
 	<div class="p-10">
 		{if isset($cart_cookie)}
 			{foreach explode(',', $cart_cookie) as $id}
-				{foreach $capsule->table('items')->where('id', '=', $id)->get() as $item}
+				{foreach \App\Models\Product::whereId($id)->get() as $item}
 					{$total_cost = $total_cost + $item->cost}
 					<div class="relative flex w-full h-36 rounded overflow-hidden shadow-lg my-2 bg-white">
 						<div>

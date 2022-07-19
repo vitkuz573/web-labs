@@ -1,7 +1,8 @@
 ﻿<?php
 
-global $smarty;
-global $capsule;
+use App\Models\Product;
 
-$smarty->assign('items', $capsule->table('items')->get());
+global $smarty;
+
+$smarty->assign('items', Product::all());
 $smarty->display('products.tpl');
