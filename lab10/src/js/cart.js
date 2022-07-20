@@ -18,12 +18,3 @@ function removeFromCart(item_id) {
 
     document.cookie = "cart=" + cart
 }
-
-$(function() {
-    $('#search').autocomplete({
-        source: document.location.origin  + '/lab10/search',
-        select: function (event, ui) {
-            window.location = document.location.origin  + '/lab10/product/' + encodeURIComponent(ui.item.value)
-        }
-    })
-})

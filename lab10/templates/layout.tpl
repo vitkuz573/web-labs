@@ -4,9 +4,9 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     {block name=css}{/block}
+	<script src="/lab10/dist/bundle.js" async></script>
     <script src="/lab10/assets/js/tailwind.js"></script>
     <script src="/lab10/assets/js/jquery-3.6.0.min.js"></script>
-    <script src="/lab10/assets/js/app.js"></script>
     {block name=js}{/block}
 </head>
 
@@ -33,7 +33,5 @@
 	</nav>
     
     {block name=body}{/block}
-
-	<script src="../lab10/dist/bundle.js" async defer></script>
 </body>
 </html>
