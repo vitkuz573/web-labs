@@ -25,7 +25,7 @@
 						<a href="/lab10/product" class="py-4 px-2 text-gray-500 font-semibold hover:text-green-500 transition duration-300">Главная</a>
 						<a href="/lab10/#" class="py-4 px-2 text-gray-500 font-semibold hover:text-green-500 transition duration-300">Контакты</a>
 						<a href="/lab10/cart" class="py-4 px-2 text-gray-500 font-semibold hover:text-green-500 transition duration-300">Корзина</a>
-                        <input id="search" name="search" placeholder="Поиск" />
+                        <div id="autocomplete"></div>
 					</div>
 				</div>
 			</div>
@@ -33,5 +33,7 @@
 	</nav>
     
     {block name=body}{/block}
+
+	<script src="../lab10/dist/bundle.js" async defer></script>
 </body>
 </html>
