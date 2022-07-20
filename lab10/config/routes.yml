@@ -16,4 +16,4 @@ auth_index:
 
 search:
     path: /search
-    controller: App\Controllers\SearchController::search
+    controller: App\Controllers\SearchController::index
