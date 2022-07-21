@@ -28,7 +28,7 @@ autocomplete({
                         <div class="aa-ItemContent">
                             <div class="aa-ItemIcon aa-ItemIcon--alignTop">
                                 <img
-                                    src="assets/images/${item.image}"
+                                    src="dist/images/${item.image}"
                                     alt="${item.name}"
                                     width="40"
                                     height="40"
