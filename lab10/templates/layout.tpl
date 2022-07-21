@@ -1,13 +1,12 @@
 <html>
 <head>
-    <title>{block name=title}Default Page Title{/block}</title>
-    <meta name="description" content="">
+	{block name=head}
+	<title>{block name=title}Default Page Title{/block}</title>
+	<meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    {block name=css}{/block}
-	<script src="/lab10/dist/bundle.js" async></script>
-    <script src="/lab10/assets/js/tailwind.js"></script>
-    <script src="/lab10/assets/js/jquery-3.6.0.min.js"></script>
-    {block name=js}{/block}
+    <link rel="stylesheet" href="/lab10/dist/css/app.css" />
+	<script src="/lab10/dist/js/app.js"></script>
+	{/block}
 </head>
 
 <body class="bg-slate-400">
@@ -17,7 +16,7 @@
 				<div class="flex space-x-7">
 					<div>
 						<a href="#" class="flex items-center py-4 px-2">
-							<img src="/lab10/assets/images/logo.png" alt="Logo" class="h-8 w-8 mr-2" />
+							<img src="/lab10/dist/images/logo.png" alt="Logo" class="h-8 w-8 mr-2" />
 							<span class="font-semibold text-gray-500 text-lg">Store</span>
 						</a>
 					</div>

@@ -1,3 +1,13 @@
 {
-    "/dist/bundle.js": "/dist/bundle.js"
+    "/dist/js/app.js": "/dist/js/app.js",
+    "/dist/css/app.css": "/dist/css/app.css",
+    "/dist/images/logo.png": "/dist/images/logo.png",
+    "/dist/images/test1.jpg": "/dist/images/test1.jpg",
+    "/dist/images/test2.jpg": "/dist/images/test2.jpg",
+    "/dist/images/test3.jpg": "/dist/images/test3.jpg",
+    "/dist/images/test4.jpg": "/dist/images/test4.jpg",
+    "/dist/images/test5.jpg": "/dist/images/test5.jpg",
+    "/dist/images/test6.jpg": "/dist/images/test6.jpg",
+    "/dist/images/test7.jpg": "/dist/images/test7.jpg",
+    "/dist/images/test8.jpg": "/dist/images/test8.jpg"
 }

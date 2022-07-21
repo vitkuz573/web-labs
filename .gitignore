@@ -1,4 +1,5 @@
 /.vs
 /*/vendor
 /*/node_modules
+/*/dist
 /lab10/templates_c/*

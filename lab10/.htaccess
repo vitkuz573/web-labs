@@ -1,4 +1,3 @@
 RewriteEngine On
-RewriteCond %{REQUEST_URI} !/assets
 RewriteCond %{REQUEST_URI} !/dist
 RewriteRule .* index.php [L]
