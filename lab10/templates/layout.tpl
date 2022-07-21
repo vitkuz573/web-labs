@@ -5,7 +5,7 @@
 	<meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="/lab10/dist/css/app.css" />
-	<script src="/lab10/dist/js/app.js"></script>
+	<script src="/lab10/dist/js/app.js" async></script>
 	{/block}
 </head>
 
