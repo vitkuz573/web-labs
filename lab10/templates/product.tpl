@@ -6,17 +6,17 @@
 	
 	<div class="flex">
 		<div>
-			<img src="../assets/images/{$item->image}" alt="{$item->name}">
+			<img src="../dist/images/{$item.image}" alt="{$item.name}">
 		</div>
 		<div>
 			<div>
-				<h1 class="text-3xl">{$item->name}</h1>
+				<h1 class="text-3xl">{$item.name}</h1>
 			</div>
 			<div>
-				<p>{$item->description}</p>
+				<p>{$item.description}</p>
 			</div>
 			<div>
-				<p>{$item->cost} ₽</p>
+				<p>{$item.price} ₽</p>
 			</div>
 		</div>
 	</div>
