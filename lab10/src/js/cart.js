@@ -1,5 +1,3 @@
-export function addToCart(id) {
-}
+export function add() {}
 
-export function removeFromCart(id) {
-}
+export function remove(id) {}
