@@ -2,7 +2,6 @@
 module.exports = {
   content: [
     'templates/*.tpl',
-    'templates_c/*.php'
   ],
   theme: {
     extend: {},
