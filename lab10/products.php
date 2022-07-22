@@ -4,5 +4,5 @@ use App\Models\Product;
 
 global $smarty;
 
-$smarty->assign('items', Product::all());
+$smarty->assign('products', Product::all());
 $smarty->display('products.tpl');
