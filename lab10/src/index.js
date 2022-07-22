@@ -1,4 +1,4 @@
 
-import './js/cart'
-import './js/filters'
+window.cart = require('./js/cart')
+window.filters = require('./js/filters')
 import './js/livesearch'
