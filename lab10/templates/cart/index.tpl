@@ -5,7 +5,7 @@
 	<div class="p-10">
 		{if isset($cart_cookie)}
 			{foreach explode(',', $cart_cookie) as $id}
-				{foreach \App\Models\Product::whereId($id)->get() as $product}
+				{foreach App\Models\Product::whereId($id)->get() as $product}
 					{$total_price = $total_price + $product.price}
 					<div class="relative flex w-full h-36 rounded overflow-hidden shadow-lg my-2 bg-white">
 						<div>
