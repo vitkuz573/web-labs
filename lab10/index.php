@@ -59,5 +59,5 @@ try {
     call_user_func_array($controller, $arguments);
 } catch (ResourceNotFoundException $e) {
     $response = new Response('Not found!', Response::HTTP_NOT_FOUND);
-    require_once 'errors/404.php';
+    $smarty->display('errors/404.tpl');
 }

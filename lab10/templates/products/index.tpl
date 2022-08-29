@@ -18,7 +18,7 @@
 			{foreach $products as $product}
 				<div class="p-4">
 					<div class="rounded-lg shadow-lg bg-white max-w-sm">
-						<a href="product/{$product.id}">
+						<a href="products/{$product.id}">
 							<img class="rounded-t-lg" src="dist/images/{$product.image}" alt="{$product.name}"/>
 						</a>
 						<div class="p-6">

@@ -1,19 +1,62 @@
-product_index:
-    path: /product
-    controller: App\Controllers\ProductController::index
-
-product_show:
-    path: /product/{id}
-    controller: App\Controllers\ProductController::show
-
+# Cart routes
 cart_index:
     path: /cart
     controller: App\Controllers\CartController::index
 
-auth_index:
-    path: /auth
-    controller: App\Controllers\AuthController::index
+# Product routes
+product_index:
+    path: /products
+    controller: App\Controllers\ProductController::index
+    methods: GET
 
-search:
+product_create:
+    path: /products/create
+    controller: App\Controllers\ProductController::create
+    methods: GET
+
+product_show:
+    path: /products/{id}
+    controller: App\Controllers\ProductController::show
+    methods: GET
+
+product_store:
+    path: /products
+    controller: App\Controllers\ProductController::store
+    methods: POST
+
+product_destroy:
+    path: /products/{id}
+    controller: App\Controller\ProductController::destroy
+    methods: DELETE
+
+# Register routes
+user_create:
+    path: /register
+    controller: App\Controllers\RegisterController::index
+    methods: GET
+
+user_store:
+    path: /register
+    controller: App\Controllers\RegisterController::store
+    methods: POST
+
+# Login routes
+login_index:
+    path: /login
+    controller: App\Controllers\LoginController::index
+    methods: GET
+
+login_check:
+    path: /login
+    controller: App\Controllers\LoginController::store
+    methods: POST
+
+# Search routes
+search_index:
     path: /search
     controller: App\Controllers\SearchController::index
+
+# Admin routes
+admin_index:
+    path: /admin
+    controller: App\Controllers\AdminController::index

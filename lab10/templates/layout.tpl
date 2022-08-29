@@ -1,7 +1,7 @@
-<html>
+<html lang="ru">
 <head>
 	{block name=head}
-	<title>{block name=title}Default Page Title{/block}</title>
+	<title>{block name=title}Default Page Title{/block} | {$smarty.env.STORE_NAME}</title>
 	<meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="/lab10/dist/css/app.css" />
@@ -21,7 +21,7 @@
 						</a>
 					</div>
 					<div class="hidden md:flex items-center space-x-1">
-						<a href="/lab10/product" class="py-4 px-2 text-gray-500 font-semibold hover:text-green-500 transition duration-300">Главная</a>
+						<a href="/lab10/products" class="py-4 px-2 text-gray-500 font-semibold hover:text-green-500 transition duration-300">Главная</a>
 						<a href="/lab10/#" class="py-4 px-2 text-gray-500 font-semibold hover:text-green-500 transition duration-300">Контакты</a>
 						<a href="/lab10/cart" class="py-4 px-2 text-gray-500 font-semibold hover:text-green-500 transition duration-300">Корзина</a>
                         <div id="autocomplete"></div>
