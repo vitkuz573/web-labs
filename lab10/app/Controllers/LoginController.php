@@ -20,18 +20,18 @@ class LoginController
 
         $user = User::whereLogin($login)->first();
 
-        if (md5($password) != $user['password']) {
+        if (!password_verify($password, $user['password'])) {
             echo 'Логин или пароль введены неверно!';
             exit();
         }
 
-        setcookie('user', $user['full_name'], time() + 3600, '/');
+        $_SESSION['user'] = $user;
 
         if ($user['is_admin'] == 1)
         {
             header('Location: admin');
         } else {
-            header('Location: product');
+            header('Location: products');
         }
     }
 }

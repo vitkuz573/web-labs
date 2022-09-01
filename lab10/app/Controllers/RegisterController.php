@@ -36,9 +36,11 @@ class RegisterController
 
         User::firstOrCreate([
             'login' => $login,
-            'password' => md5($password),
+            'password' => password_hash($password, PASSWORD_BCRYPT),
             'first_name' => $first_name,
             'last_name' => $last_name,
         ]);
+
+        header('Location: login');
     }
 }

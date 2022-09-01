@@ -25,6 +25,11 @@
 						<a href="/lab10/#" class="py-4 px-2 text-gray-500 font-semibold hover:text-green-500 transition duration-300">Контакты</a>
 						<a href="/lab10/cart" class="py-4 px-2 text-gray-500 font-semibold hover:text-green-500 transition duration-300">Корзина</a>
                         <div id="autocomplete"></div>
+						{if !isset($smarty.session.user)}
+							<a href="/lab10/login" class="py-4 px-2 text-gray-500 font-semibold hover:text-green-500 transition duration-300">Вход</a>
+						{else}
+							<a href="/lab10/logout" class="py-4 px-2 text-gray-500 font-semibold hover:text-green-500 transition duration-300">Выход</a>
+						{/if}
 					</div>
 				</div>
 			</div>

@@ -13,6 +13,14 @@ use Symfony\Component\HttpKernel\Controller;
 use Symfony\Component\Dotenv\Dotenv;
 use Illuminate\Database\Capsule\Manager as Capsule;
 
+// Запуск сессии
+session_start();
+
+if (!isset($_SESSION['cart']))
+{
+    $_SESSION['cart'] = [];
+}
+
 // Загрузка .env
 $dotenv = new Dotenv();
 $dotenv->load(__DIR__ . '/.env');

@@ -2,6 +2,17 @@
 cart_index:
     path: /cart
     controller: App\Controllers\CartController::index
+    methods: GET
+
+cart_store:
+    path: /cart/{id}
+    controller: App\Controllers\CartController::store
+    methods: POST
+
+cart_destroy:
+    path: /cart/{id}
+    controller: App\Controllers\CartController::destroy
+    methods: DELETE
 
 # Product routes
 product_index:
@@ -23,6 +34,16 @@ product_store:
     path: /products
     controller: App\Controllers\ProductController::store
     methods: POST
+
+product_edit:
+    path: /products/edit/{id}
+    controller: App\Controllers\ProductController::edit
+    methods: GET
+
+product_update:
+    path: /products/{id}
+    controller: App\Controllers\ProductController::update
+    methods: PUT
 
 product_destroy:
     path: /products/{id}
@@ -50,6 +71,12 @@ login_check:
     path: /login
     controller: App\Controllers\LoginController::store
     methods: POST
+
+# Logout routes
+logout_index:
+    path: /logout
+    controller: App\Controllers\LogoutController::index
+    methods: GET
 
 # Search routes
 search_index:

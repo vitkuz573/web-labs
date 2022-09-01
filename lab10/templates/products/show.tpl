@@ -2,8 +2,6 @@
 {block name=title}Интернет-магазин{/block}
 
 {block name=body}
-	{$product = App\Models\Product::whereId(array_pop(explode('/', $smarty.server.REQUEST_URI)))->first()}
-	
 	<div class="flex">
 		<div>
 			<img src="../dist/images/{$product.image}" alt="{$product.name}">

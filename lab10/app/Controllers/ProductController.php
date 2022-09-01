@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Models\Product;
+use function App\Helpers\get_last_uri_chunk;
 
 class ProductController
 {
@@ -16,8 +17,18 @@ class ProductController
 
     public function show(): void
     {
+        $id = get_last_uri_chunk($_SERVER['REQUEST_URI']);
+        $product = Product::find($id);
+
         global $smarty;
 
+        if ($product == null) {
+            $smarty->display('errors/404.tpl');
+
+            exit();
+        }
+
+        $smarty->assign('product', $product);
         $smarty->display('products/show.tpl');
     }
 
@@ -30,18 +41,45 @@ class ProductController
 
     public function store(): void
     {
-        $image = filter_var(trim($_POST['image']), FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-        $name = filter_var(trim($_POST['name']), FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-        $description = filter_var(trim($_POST['description']), FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-        $price = filter_var(trim($_POST['price']), FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-
         Product::create([
-            'image' => $image,
-            'name' => $name,
-            'description' => $description,
-            'price' => $price,
+            'image' => filter_var(trim($_POST['image']), FILTER_SANITIZE_FULL_SPECIAL_CHARS),
+            'name' => filter_var(trim($_POST['name']), FILTER_SANITIZE_FULL_SPECIAL_CHARS),
+            'description' => filter_var(trim($_POST['description']), FILTER_SANITIZE_FULL_SPECIAL_CHARS),
+            'price' => filter_var(trim($_POST['price']), FILTER_SANITIZE_FULL_SPECIAL_CHARS),
         ]);
 
         header('Location: admin');
+    }
+
+    public function edit() : void
+    {
+        global $smarty;
+
+        $id = get_last_uri_chunk($_SERVER['REQUEST_URI']);
+
+        if (Product::find($id) == null)
+        {
+            $smarty->display('errors/404.tpl');
+
+            exit();
+        }
+
+        $smarty->assign('product', Product::find($id));
+        $smarty->display('products/edit.tpl');
+    }
+
+    public function update() : void
+    {
+        $id = get_last_uri_chunk($_SERVER['REQUEST_URI']);
+        $product = Product::find($id);
+
+        if ($product == null)
+        {
+            global $smarty;
+
+            $smarty->display('errors/404.tpl');
+        }
+
+        $product->update();
     }
 }
