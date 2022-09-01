@@ -11,7 +11,7 @@ class SearchController
         $term = filter_var(trim($_GET['term']), FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
         if (isset($term) && $term) {
-            echo json_encode(Product::where('name', 'LIKE', '%' . $_GET['term'] . '%')->get());
+            echo json_encode(Product::whereLike('name', $term)->get());
         } else {
             die();
         }

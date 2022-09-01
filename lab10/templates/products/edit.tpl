@@ -3,9 +3,7 @@
 
 {block name=body}
     <div class="p-6">
-        <form class="w-full max-w-screen-lg" action="../products" method="post">
-
-            <input type="hidden" name="_method" value="put" />
+        <form class="w-full max-w-screen-lg" action="../../products/{$product.id}" method="post" enctype="multipart/form-data">
 
             <div class="flex flex-wrap -mx-3 mb-6">
                 <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
@@ -32,6 +30,13 @@
                 <div class="w-full md:w-1/2 px-3">
                     <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="price">Стоимость</label>
                     <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="price" name="price" type="number" value="{$product.price}">
+                </div>
+            </div>
+
+            <div class="flex flex-wrap -mx-3 mb-6">
+                <div class="w-full md:w-1/2 px-3">
+                    <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="in_stock">Количество на складе</label>
+                    <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="in_stock" name="in_stock" type="number" value="{$product.in_stock}">
                 </div>
             </div>
 

@@ -3,15 +3,17 @@
 namespace App\Controllers;
 
 use App\Models\Product;
-use function App\Helpers\is_admin;
+use SmartyException;
+use function App\Helpers\access_control;
 
 class AdminController
 {
+    /**
+     * @throws SmartyException
+     */
     public function index(): void
     {
-        if (!$_SESSION['user'] || !is_admin($_SESSION['user'])) {
-            header('Location: login');
-        }
+        access_control('login');
 
         global $smarty;
 

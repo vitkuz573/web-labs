@@ -3,10 +3,14 @@
 namespace App\Controllers;
 
 use App\Models\Product;
+use SmartyException;
 use function App\Helpers\get_last_uri_chunk;
 
 class CartController
 {
+    /**
+     * @throws SmartyException
+     */
     public function index(): void
     {
         global $smarty;

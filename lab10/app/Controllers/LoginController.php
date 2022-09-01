@@ -3,9 +3,13 @@
 namespace App\Controllers;
 
 use App\Models\User;
+use SmartyException;
 
 class LoginController
 {
+    /**
+     * @throws SmartyException
+     */
     public function index(): void
     {
         global $smarty;

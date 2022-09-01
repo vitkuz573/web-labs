@@ -43,11 +43,11 @@ product_edit:
 product_update:
     path: /products/{id}
     controller: App\Controllers\ProductController::update
-    methods: PUT
+    methods: POST
 
 product_destroy:
     path: /products/{id}
-    controller: App\Controller\ProductController::destroy
+    controller: App\Controllers\ProductController::destroy
     methods: DELETE
 
 # Register routes

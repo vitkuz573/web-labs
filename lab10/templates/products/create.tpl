@@ -3,7 +3,7 @@
 
 {block name=body}
     <div class="p-6">
-        <form class="w-full max-w-screen-lg" action="../products" method="post">
+        <form class="w-full max-w-screen-lg" action="../products" method="post" enctype="multipart/form-data">
 
             <div class="flex flex-wrap -mx-3 mb-6">
                 <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">

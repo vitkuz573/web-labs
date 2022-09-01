@@ -20,7 +20,7 @@
 
 							<div class="flex px-3 pt-7">
 								<p class="px-3">
-									<input type="number" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="quantity_{$product.id}" value="1" onchange="window.cart.conversion({$product.id})"/>
+									<input type="number" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="quantity_{$product.id}" value="1" max="{$product.in_stock}" onchange="window.cart.conversion({$product.id})"/>
 								</p>
 								<p id="total_item_{$product.id}_price" class="text-grey-darker text-base pt-2">Итого: {$product.price} ₽</p>
 							</div>

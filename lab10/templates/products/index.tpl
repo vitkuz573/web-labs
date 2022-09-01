@@ -36,7 +36,7 @@
 	{if $products->hasPages() != 0}
 		<div class="flex-auto text-center p-5">
 			<label for="page">Страница: </label>
-			<input class="text-center" type="number" id="page" value="{$products->currentPage()}" max="{$products->lastPage()}" onchange="window.location.href = '../lab10/products?page=' + this.value"> из {$products->lastPage()}
+			<input class="text-center" type="number" id="page" value="{$products->currentPage()}" min="1" max="{$products->lastPage()}" onchange="window.location.href = '../lab10/products?page=' + this.value"> из {$products->lastPage()}
 		</div>
 	{/if}
 {/block}

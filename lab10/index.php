@@ -2,6 +2,7 @@
 
 require_once __DIR__ . '/vendor/autoload.php';
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Pagination\Paginator;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\Routing\Loader\YamlFileLoader;
@@ -42,6 +43,11 @@ $capsule->addConnection([
 
 $capsule->setAsGlobal();
 $capsule->bootEloquent();
+
+// Создание макроса для WHERE LIKE
+Builder::macro('whereLike', function (string $attribute, string $searchTerm) {
+    return $this->orWhere($attribute, 'LIKE', "%{$searchTerm}%");
+});
 
 // Назначение page resolver для пагинации
 Paginator::currentPageResolver(function ($pageName = 'page') {

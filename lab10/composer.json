@@ -11,7 +11,8 @@
         "ext-pdo": "*",
         "ext-json": "*",
         "ext-curl": "*",
-        "illuminate/pagination": "^9.27"
+        "illuminate/pagination": "^9.27",
+        "ext-fileinfo": "*"
     },
     "autoload": {
         "psr-4": {
