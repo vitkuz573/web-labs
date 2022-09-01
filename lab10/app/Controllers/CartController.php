@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Models\Product;
+use function App\Helpers\get_last_uri_chunk;
 
 class CartController
 {
@@ -21,15 +22,14 @@ class CartController
 
     public function store(): void
     {
-        $uri_chunks = explode('/', $_SERVER['REQUEST_URI']);
-        $id = array_pop($uri_chunks);
+        $id = get_last_uri_chunk($_SERVER['REQUEST_URI']);
 
         $resData = [];
 
         if (isset($_SESSION['cart']) && !in_array($id, $_SESSION['cart'])) {
             $_SESSION['cart'][] = $id;
-            $resData['cntItems'] = count($_SESSION['cart']);
             $resData['success'] = 1;
+            $resData['cntItems'] = count($_SESSION['cart']);
         } else {
             $resData['success'] = 0;
         }
@@ -39,8 +39,7 @@ class CartController
 
     public function destroy() : void
     {
-        $uri_chunks = explode('/', $_SERVER['REQUEST_URI']);
-        $id = array_pop($uri_chunks);
+        $id = get_last_uri_chunk($_SERVER['REQUEST_URI']);
 
         $resData = [];
         $key = array_search($id, $_SESSION['cart']);
@@ -48,8 +47,8 @@ class CartController
         if ($key !== false)
         {
             unset($_SESSION['cart'][$key]);
-            $resData['cntItems'] = count($_SESSION['cart']);
             $resData['success'] = 1;
+            $resData['cntItems'] = count($_SESSION['cart']);
         } else {
             $resData['success'] = 0;
         }

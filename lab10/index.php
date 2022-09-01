@@ -2,6 +2,7 @@
 
 require_once __DIR__ . '/vendor/autoload.php';
 
+use Illuminate\Pagination\Paginator;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\Routing\Loader\YamlFileLoader;
 use Symfony\Component\Routing\RequestContext;
@@ -42,8 +43,14 @@ $capsule->addConnection([
 $capsule->setAsGlobal();
 $capsule->bootEloquent();
 
+// Назначение page resolver для пагинации
+Paginator::currentPageResolver(function ($pageName = 'page') {
+    return (int) ($_GET[$pageName] ?? 1);
+});
+
 // Инициализация шаблонизатора Smarty
 $smarty = new Smarty();
+$smarty->debugging = false;
 
 // Маршрутизация с использованием YML файла в качестве файла маршрутов
 $locator = new FileLocator([__DIR__]);

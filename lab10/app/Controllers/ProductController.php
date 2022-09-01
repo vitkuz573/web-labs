@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Models\Product;
 use function App\Helpers\get_last_uri_chunk;
+use function App\Helpers\show_error_page;
 
 class ProductController
 {
@@ -11,7 +12,7 @@ class ProductController
     {
         global $smarty;
 
-        $smarty->assign('products', Product::all());
+        $smarty->assign('products', Product::paginate(8));
         $smarty->display('products/index.tpl');
     }
 
@@ -23,9 +24,7 @@ class ProductController
         global $smarty;
 
         if ($product == null) {
-            $smarty->display('errors/404.tpl');
-
-            exit();
+            show_error_page($smarty, 404);
         }
 
         $smarty->assign('product', $product);
@@ -59,9 +58,7 @@ class ProductController
 
         if (Product::find($id) == null)
         {
-            $smarty->display('errors/404.tpl');
-
-            exit();
+            show_error_page($smarty, 404);
         }
 
         $smarty->assign('product', Product::find($id));
@@ -77,7 +74,7 @@ class ProductController
         {
             global $smarty;
 
-            $smarty->display('errors/404.tpl');
+            show_error_page($smarty, 404);
         }
 
         $product->update();

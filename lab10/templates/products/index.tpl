@@ -2,17 +2,17 @@
 {block name=title}Продукты{/block}
 
 {block name=body}
-	<div class="flex">
-		<div class="p-4">
-			<form class="space-y-4">
-				<div class="flex">
-					<input type="number" id="min_price" name="min_price" class="w-24">
-					<b>&nbsp;-&nbsp;</b>
-					<input type="number" id="max_price" name="max_price" class="w-24">
-				</div>
-				<button type="button" onclick="getProductsByFilters()" class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Показать</button>
-			</form>
-		</div>
+	<div class="flex m-0 p-0">
+{*		<div class="p-4">*}
+{*			<form class="space-y-4">*}
+{*				<div class="flex">*}
+{*					<input type="number" id="min_price" name="min_price" class="w-24">*}
+{*					<b>&nbsp;-&nbsp;</b>*}
+{*					<input type="number" id="max_price" name="max_price" class="w-24">*}
+{*				</div>*}
+{*				<button type="button" onclick="getProductsByFilters()" class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Показать</button>*}
+{*			</form>*}
+{*		</div>*}
 
 		<div class="flex flex-wrap justify-center">
 			{foreach $products as $product}
@@ -32,4 +32,11 @@
         	{/foreach}
 		</div>
 	</div>
+
+	{if $products->hasPages() != 0}
+		<div class="flex-auto text-center p-5">
+			<label for="page">Страница: </label>
+			<input class="text-center" type="number" id="page" value="{$products->currentPage()}" max="{$products->lastPage()}" onchange="window.location.href = '../lab10/products?page=' + this.value"> из {$products->lastPage()}
+		</div>
+	{/if}
 {/block}

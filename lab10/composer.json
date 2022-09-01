@@ -10,7 +10,8 @@
         "illuminate/database": "^9.20",
         "ext-pdo": "*",
         "ext-json": "*",
-        "ext-curl": "*"
+        "ext-curl": "*",
+        "illuminate/pagination": "^9.27"
     },
     "autoload": {
         "psr-4": {
