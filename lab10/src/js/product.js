@@ -1,5 +1,5 @@
 export function remove(id) {
-    fetch('products/' + id, {
+    fetch('../products/' + id, {
         method: 'DELETE',
     }).then(response => {
         if (response.status !== 200) {

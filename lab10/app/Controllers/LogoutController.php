@@ -8,6 +8,7 @@ class LogoutController
     {
         if ($_SESSION['user']) {
             unset($_SESSION['user']);
+            unset($_SESSION['cart']);
 
             header('Location: login');
         }

@@ -20,6 +20,11 @@ product_index:
     controller: App\Controllers\ProductController::index
     methods: GET
 
+product_index_1:
+    path: /
+    controller: App\Controllers\ProductController::index
+    methods: GET
+
 product_create:
     path: /products/create
     controller: App\Controllers\ProductController::create
@@ -87,3 +92,37 @@ search_index:
 admin_index:
     path: /admin
     controller: App\Controllers\AdminController::index
+
+admin_product_index:
+    path: /admin/products
+    controller: App\Controllers\AdminProductController::index
+
+admin_order_index:
+    path: /admin/orders
+    controller: App\Controllers\AdminOrderController::index
+
+# Order routes
+order_store:
+    path: /orders
+    controller: App\Controllers\OrderController::store
+    methods: POST
+
+order_edit:
+    path: /orders/edit/{id}
+    controller: App\Controllers\OrderController::edit
+    methods: GET
+
+order_update:
+    path: /orders/{id}
+    controller: App\Controllers\OrderController::update
+    methods: POST
+
+order_destroy:
+    path: /orders/{id}
+    controller: App\Controllers\OrderController::destroy
+    methods: DELETE
+
+order_show:
+    path: /orders/{id}
+    controller: App\Controllers\OrderController::show
+    methods: GET

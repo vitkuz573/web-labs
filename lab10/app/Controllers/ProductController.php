@@ -61,7 +61,7 @@ class ProductController
             'price' => filter_var(trim($_POST['price']), FILTER_SANITIZE_FULL_SPECIAL_CHARS),
         ]);
 
-        header('Location: admin');
+        header('Location: admin/products');
     }
 
     /**
@@ -84,6 +84,9 @@ class ProductController
         $smarty->display('products/edit.tpl');
     }
 
+    /**
+     * @throws SmartyException
+     */
     public function update() : void
     {
         access_control('../../login');
@@ -98,24 +101,29 @@ class ProductController
             show_error_page($smarty, 404);
         }
 
-        if (isset($_FILES['image'])) {
+        if ($_FILES['image']['size'] != 0) {
             $product->update([
                 'name' => filter_var(trim($_POST['name']), FILTER_SANITIZE_FULL_SPECIAL_CHARS),
                 'description' => filter_var(trim($_POST['description']), FILTER_SANITIZE_FULL_SPECIAL_CHARS),
                 'image' => upload_image(),
                 'price' => filter_var(trim($_POST['price']), FILTER_SANITIZE_FULL_SPECIAL_CHARS),
+                'in_stock' => filter_var(trim($_POST['in_stock']), FILTER_SANITIZE_FULL_SPECIAL_CHARS),
             ]);
         } else {
             $product->update([
                 'name' => filter_var(trim($_POST['name']), FILTER_SANITIZE_FULL_SPECIAL_CHARS),
                 'description' => filter_var(trim($_POST['description']), FILTER_SANITIZE_FULL_SPECIAL_CHARS),
                 'price' => filter_var(trim($_POST['price']), FILTER_SANITIZE_FULL_SPECIAL_CHARS),
+                'in_stock' => filter_var(trim($_POST['in_stock']), FILTER_SANITIZE_FULL_SPECIAL_CHARS),
             ]);
         }
 
-        header('Location: admin');
+        header('Location: ../admin/products');
     }
 
+    /**
+     * @throws SmartyException
+     */
     public function destroy() : void
     {
         access_control('../../login');

@@ -15,12 +15,12 @@
 							<div>
 								<div class="font-bold text-xl mb-2">{$product.name}</div>
 								<p class="text-grey-darker text-base">{$product.description}</p>
-								<p class="text-grey-darker text-base" id="item_{$product.id}_price">{$product.price} ₽</p>
+								<p class="price text-grey-darker text-base" id="item_{$product.id}_price">{$product.price} ₽</p>
 							</div>
 
 							<div class="flex px-3 pt-7">
 								<p class="px-3">
-									<input type="number" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="quantity_{$product.id}" value="1" max="{$product.in_stock}" onchange="window.cart.conversion({$product.id})"/>
+									<input type="number" class="quantity appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="quantity_{$product.id}" value="1" max="{$product.in_stock}" onchange="window.cart.conversion({$product.id})"/>
 								</p>
 								<p id="total_item_{$product.id}_price" class="text-grey-darker text-base pt-2">Итого: {$product.price} ₽</p>
 							</div>
@@ -37,8 +37,9 @@
 			<div class="px-6 py-4">
 				<p id="total_price">Итого: {$total_price} ₽</p>
 			</div>
+
 			<div class="absolute inset-y-0 right-0">
-				<button type="button" class="h-full inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Перейти к оплате</button>
+				<button type="button" class="h-full inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out" onclick="window.orders.add()">Создать заказ</button>
 			</div>
 		</div>
 	</div>

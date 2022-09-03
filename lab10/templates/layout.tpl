@@ -23,12 +23,12 @@
 					<div class="hidden md:flex items-center space-x-1">
 						<a href="/lab10/products" class="py-4 px-2 text-gray-500 font-semibold hover:text-green-500 transition duration-300">Главная</a>
 						<a href="/lab10/#" class="py-4 px-2 text-gray-500 font-semibold hover:text-green-500 transition duration-300">Контакты</a>
-						<a href="/lab10/cart" class="py-4 px-2 text-gray-500 font-semibold hover:text-green-500 transition duration-300">Корзина</a>
+						<a href="/lab10/cart" id="cart_link" class="py-4 px-2 text-gray-500 font-semibold hover:text-green-500 transition duration-300">Корзина ({count($smarty.session.cart)})</a>
                         <div id="autocomplete"></div>
 						{if !isset($smarty.session.user)}
 							<a href="/lab10/login" class="py-4 px-2 text-gray-500 font-semibold hover:text-green-500 transition duration-300">Вход</a>
 						{else}
-							<a href="/lab10/logout" class="py-4 px-2 text-gray-500 font-semibold hover:text-green-500 transition duration-300">Выход</a>
+							<a href="/lab10/logout" class="py-4 px-2 text-gray-500 font-semibold hover:text-green-500 transition duration-300">({$smarty.session.user.first_name}) Выход</a>
 						{/if}
 					</div>
 				</div>

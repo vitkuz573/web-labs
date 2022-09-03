@@ -2,7 +2,6 @@
 
 namespace App\Controllers;
 
-use App\Models\Product;
 use SmartyException;
 use function App\Helpers\access_control;
 
@@ -17,7 +16,6 @@ class AdminController
 
         global $smarty;
 
-        $smarty->assign('products', Product::all());
-        $smarty->display('admin.tpl');
+        $smarty->display('admin/index.tpl');
     }
 }
