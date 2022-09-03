@@ -63,6 +63,8 @@ export function conversion(id) {
 
     document.getElementById('total_item_' + id + '_price').textContent = 'Итого: ' + itemRealPrice + ' ₽'
 
+    fetch('')
+
     updateTotalPrice();
 }
 

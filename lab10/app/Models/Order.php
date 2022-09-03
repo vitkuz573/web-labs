@@ -14,7 +14,7 @@ class Order extends Model
 {
     protected $fillable = [
         'user_id',
-        'items',
+        'user_ip',
     ];
 
     protected $casts = [
@@ -30,17 +30,22 @@ class Order extends Model
     {
         return Attribute::make(
             get: function ($value, $attributes) {
-                dd($attributes['items']);
-                $items = array_keys(json_decode($attributes['items']));
+                $data = json_decode(json_decode($attributes['items']), true);
 
-                $prices = Product::find($items)->pluck('price');
-                $quantities = array_values(json_decode($attributes['items']));
+                $items = array_keys($data);
 
-                $sum = 0;
+                $prices = Product::find($items)->pluck('price')->toArray();
+                $quantities = array_values($data);
 
-                for ($i = 0; $i < count($prices); $i++) {
-                    $sum += $prices[$i] * $quantities[$i];
+                $data_items = array_combine($prices, $quantities);
+
+                $result = 0;
+
+                foreach ($data_items as $price => $quantity) {
+                    $result += $price * $quantity;
                 }
+
+                return $result;
             },
         );
     }

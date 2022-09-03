@@ -4,6 +4,11 @@ cart_index:
     controller: App\Controllers\CartController::index
     methods: GET
 
+order_index:
+    path: /cart/order
+    controller: App\Controllers\OrderController::index
+    methods: POST
+
 cart_store:
     path: /cart/{id}
     controller: App\Controllers\CartController::store
@@ -105,16 +110,6 @@ admin_order_index:
 order_store:
     path: /orders
     controller: App\Controllers\OrderController::store
-    methods: POST
-
-order_edit:
-    path: /orders/edit/{id}
-    controller: App\Controllers\OrderController::edit
-    methods: GET
-
-order_update:
-    path: /orders/{id}
-    controller: App\Controllers\OrderController::update
     methods: POST
 
 order_destroy:

@@ -13,14 +13,13 @@
                 </tr>
                 </thead>
                 <tbody class="bg-white dark:bg-slate-800">
-                {foreach $items as $product_id => $quantity}
-                    {$product = App\Models\Product::find($product_id)}
+                {foreach $purchases as $purchase}
                     <tr>
                         <td class="border-b border-slate-100 dark:border-slate-700 p-4 pl-8 text-slate-500 dark:text-slate-400">
-                            <a href="../products/{$product_id}" class="text-blue-700">Товар #{$product.id}</a>
+                            <a href="../products/{$purchase.product_id}" class="text-blue-700">Товар #{$purchase.product_id}</a>
                         </td>
-                        <td class="border-b border-slate-100 dark:border-slate-700 p-4 text-slate-500 dark:text-slate-400">{$product.name}</td>
-                        <td class="border-b border-slate-100 dark:border-slate-700 p-4 pr-8 text-slate-500 dark:text-slate-400">{$quantity}</td>
+                        <td class="border-b border-slate-100 dark:border-slate-700 p-4 text-slate-500 dark:text-slate-400">{$purchase.name}</td>
+                        <td class="border-b border-slate-100 dark:border-slate-700 p-4 pr-8 text-slate-500 dark:text-slate-400">{$purchase.amount}</td>
                     </tr>
                 {/foreach}
                 </tbody>

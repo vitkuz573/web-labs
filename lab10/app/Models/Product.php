@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 /**
  * @method static find(string $id)
@@ -18,4 +19,9 @@ class Product extends Model {
         'price',
         'in_stock',
     ];
+
+    public function purchases() : BelongsTo
+    {
+        return $this->belongsTo(Purchase::class);
+    }
 }

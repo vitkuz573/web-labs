@@ -2,11 +2,11 @@
 {block name=title}Интернет-магазин{/block}
 
 {block name=body}
-	<div class="flex">
+	<div class="flex p-8">
 		<div>
-			<img src="../dist/images/{$product.image}" alt="{$product.name}">
+			<img class="h-56 rounded-md" src="../dist/images/{$product.image}" alt="{$product.name}">
 		</div>
-		<div>
+		<div class="px-6">
 			<div>
 				<h1 class="text-3xl">{$product.name}</h1>
 			</div>
