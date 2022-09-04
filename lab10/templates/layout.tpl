@@ -30,6 +30,10 @@
 						{else}
 							<a href="/lab10/logout" class="py-4 px-2 text-gray-500 font-semibold hover:text-green-500 transition duration-300">({$smarty.session.user.first_name}) Выход</a>
 						{/if}
+
+						{if $smarty.session.user.is_admin == 1}
+							<a href="/lab10/admin" class="text-blue-600">Админ-панель</a>
+						{/if}
 					</div>
 				</div>
 			</div>

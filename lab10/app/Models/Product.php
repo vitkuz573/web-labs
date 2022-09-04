@@ -20,8 +20,5 @@ class Product extends Model {
         'in_stock',
     ];
 
-    public function purchases() : BelongsTo
-    {
-        return $this->belongsTo(Purchase::class);
-    }
+
 }

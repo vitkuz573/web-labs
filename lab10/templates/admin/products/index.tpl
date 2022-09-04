@@ -2,25 +2,35 @@
 {block name=title}Админ-панель{/block}
 
 {block name=body}
-    <div class="p-4">
-        <div class="relative py-5">
-            <button type="button" class="absolute inset-y-0 right-0 inline-block px-6 py-2.5 bg-green-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-green-700 hover:shadow-lg focus:bg-green-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-green-800 active:shadow-lg transition duration-150 ease-in-out"><a href="../products/create">Новый товар</a></button>
-        </div>
-        {foreach $products as $product}
-            <div id="product_{$product.id}" class="relative flex w-full h-36 rounded overflow-hidden shadow-lg my-2 bg-white">
-                <div>
-                    <img class="h-48" src="../dist/images/{$product.image}" alt="{$product.name}">
-                </div>
-                <div class="px-6 py-4">
-                    <div class="font-bold text-xl mb-2">{$product.name}</div>
-                    <p class="text-grey-darker text-base">{$product.description}</p>
-                    <p class="text-grey-darker text-base">{$product.price} ₽</p>
-                </div>
-                <div class="absolute inset-y-0 right-0">
-                    <button type="button" class="h-full inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"><a href="../products/edit/{$product.id}">Редактировать</a></button>
-                    <button type="button" onclick="window.product.remove({$product.id});" class="h-full inline-block px-6 py-2.5 bg-red-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-red-700 hover:shadow-lg focus:bg-red-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-red-800 active:shadow-lg transition duration-150 ease-in-out">Удалить</button>
-                </div>
-            </div>
-        {/foreach}
+    <div class="relative rounded-xl overflow-auto">
+    <div class="shadow-sm overflow-hidden my-8 p-4">
+        <table class="border-collapse table-auto w-full text-sm">
+            <thead>
+            <tr>
+                <th class="border-b dark:border-slate-600 font-medium p-4 pl-8 pt-0 pb-3 text-slate-400 dark:text-slate-200 text-left">ID</th>
+                <th class="border-b dark:border-slate-600 font-medium p-4 pt-0 pb-3 text-slate-400 dark:text-slate-200 text-left">Наименование</th>
+                <th class="border-b dark:border-slate-600 font-medium p-4 pr-8 pt-0 pb-3 text-slate-400 dark:text-slate-200 text-left">Описание</th>
+                <th class="border-b dark:border-slate-600 font-medium p-4 pr-8 pt-0 pb-3 text-slate-400 dark:text-slate-200 text-left">Стоимость</th>
+                <th class="border-b dark:border-slate-600 font-medium p-4 pr-8 pt-0 pb-3 text-slate-400 dark:text-slate-200 text-left">Действия</th>
+            </tr>
+            </thead>
+            <tbody class="bg-white dark:bg-slate-800">
+            {foreach $products as $product}
+            <tr id="product_{$product.id}">
+                <td class="border-b border-slate-100 dark:border-slate-700 p-4 pl-8 text-slate-500 dark:text-slate-400">
+                    <a href="../products/{$product.id}" class="text-blue-700">Товар #{$product.id}</a>
+                </td>
+                <td class="border-b border-slate-100 dark:border-slate-700 p-4 pl-8 text-slate-500 dark:text-slate-400">{$product.name}</td>
+                <td class="border-b border-slate-100 dark:border-slate-700 p-4 pl-8 text-slate-500 dark:text-slate-400">{$product.description}</td>
+                <td class="border-b border-slate-100 dark:border-slate-700 p-4 pl-8 text-slate-500 dark:text-slate-400">{$product.price}</td>
+                <td class="border-b border-slate-100 dark:border-slate-700 p-4 pl-8 text-slate-500 dark:text-slate-400">
+                    <a href="../products/edit/{$product.id}" class="text-blue-600">Редактировать</a>
+                    <a href="#" class="text-red-600" onclick="window.product.remove({$product.id}); return false;">Удалить</a>
+                </td>
+            </tr>
+            {/foreach}
+            </tbody>
+        </table>
+    </div>
     </div>
 {/block}

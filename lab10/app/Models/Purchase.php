@@ -3,8 +3,11 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
+/**
+ * @method static whereOrderId(string $id)
+ */
 class Purchase extends Model {
     protected $fillable = [
         'order_id',
@@ -13,8 +16,8 @@ class Purchase extends Model {
         'amount',
     ];
 
-    public function product() : HasMany
+    public function product() : BelongsTo
     {
-        return $this->hasMany(Product::class);
+        return $this->belongsTo(Product::class);
     }
 }

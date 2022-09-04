@@ -14,6 +14,13 @@
 				<p>{$product.description}</p>
 			</div>
 			<div>
+				{if $product.in_stock == 0}
+					<p>Нет в наличии</p>
+				{else}
+					<p>В наличии: {$product.in_stock}</p>
+				{/if}
+			</div>
+			<div>
 				<p>{$product.price} ₽</p>
 			</div>
 		</div>
