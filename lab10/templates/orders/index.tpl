@@ -3,7 +3,7 @@
 
 {block name=body}
     <div class="p-4 relative rounded-xl overflow-auto">
-        <div class="shadow-sm overflow-hidden my-8 w-full rounded overflow-hidden shadow-lg my-2 bg-white p-4">
+        <div class="shadow-sm overflow-hidden my-8 w-full rounded overflow-hidden shadow-lg bg-white p-4">
             <table class="border-collapse table-auto w-full text-sm">
                 <thead>
                 <tr>
