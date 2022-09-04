@@ -3,28 +3,28 @@
 
 {block name=body}
     <div class="p-4 relative rounded-xl overflow-auto">
-        <div class="shadow-sm overflow-hidden my-8">
+        <div class="shadow-sm overflow-hidden my-8 w-full rounded overflow-hidden shadow-lg my-2 bg-white p-4">
             <table class="border-collapse table-auto w-full text-sm">
                 <thead>
                 <tr>
-                    <th class="border-b dark:border-slate-600 font-medium p-4 pl-8 pt-0 pb-3 text-slate-400 dark:text-slate-200 text-left">ID</th>
-                    <th class="border-b dark:border-slate-600 font-medium p-4 pt-0 pb-3 text-slate-400 dark:text-slate-200 text-left">Наименование</th>
-                    <th class="border-b dark:border-slate-600 font-medium p-4 pr-8 pt-0 pb-3 text-slate-400 dark:text-slate-200 text-left">Количество</th>
-                    <th class="border-b dark:border-slate-600 font-medium p-4 pr-8 pt-0 pb-3 text-slate-400 dark:text-slate-200 text-left">Цена за единицу</th>
-                    <th class="border-b dark:border-slate-600 font-medium p-4 pr-8 pt-0 pb-3 text-slate-400 dark:text-slate-200 text-left">Стоимость</th>
+                    <th class="border-b font-medium p-4 pl-8 pt-0 pb-3 text-slate-400 text-left">ID</th>
+                    <th class="border-b font-medium p-4 pt-0 pb-3 text-slate-400 text-left">Наименование</th>
+                    <th class="border-b font-medium p-4 pr-8 pt-0 pb-3 text-slate-400 text-left">Количество</th>
+                    <th class="border-b font-medium p-4 pr-8 pt-0 pb-3 text-slate-400 text-left">Цена за единицу</th>
+                    <th class="border-b font-medium p-4 pr-8 pt-0 pb-3 text-slate-400 text-left">Стоимость</th>
                 </tr>
                 </thead>
-                <tbody class="bg-white dark:bg-slate-800">
+                <tbody class="bg-white">
                 {foreach $order as $product}
                     {$total_price = $total_price + $product.realPrice}
                     <tr>
-                        <td class="border-b border-slate-100 dark:border-slate-700 p-4 pl-8 text-slate-500 dark:text-slate-400">
+                        <td class="border-b border-slate-100 p-4 pl-8 text-slate-500">
                             <a href="../products/{$product.id}" class="text-blue-700">Товар #{$product.id}</a>
                         </td>
-                        <td class="border-b border-slate-100 dark:border-slate-700 p-4 text-slate-500 dark:text-slate-400">{$product.name}</td>
-                        <td class="border-b border-slate-100 dark:border-slate-700 p-4 pr-8 text-slate-500 dark:text-slate-400">{$product.cnt}</td>
-                        <td class="border-b border-slate-100 dark:border-slate-700 p-4 pr-8 text-slate-500 dark:text-slate-400">{$product.price} ₽</td>
-                        <td class="border-b border-slate-100 dark:border-slate-700 p-4 pr-8 text-slate-500 dark:text-slate-400">{$product.realPrice} ₽</td>
+                        <td class="border-b border-slate-100 p-4 text-slate-500">{$product.name}</td>
+                        <td class="border-b border-slate-100 p-4 pr-8 text-slate-500">{$product.cnt}</td>
+                        <td class="border-b border-slate-100 p-4 pr-8 text-slate-500">{$product.price} ₽</td>
+                        <td class="border-b border-slate-100 p-4 pr-8 text-slate-500">{$product.realPrice} ₽</td>
                     </tr>
                 {/foreach}
                 </tbody>
