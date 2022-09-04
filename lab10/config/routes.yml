@@ -121,3 +121,14 @@ order_show:
     path: /orders/{id}
     controller: App\Controllers\OrderController::show
     methods: GET
+
+# Profile routes
+profile_edit:
+    path: /user
+    controller: App\Controllers\ProfileController::edit
+    methods: GET
+
+profile_update:
+    path: /user
+    controller: App\Controllers\ProfileController::update
+    methods: PUT

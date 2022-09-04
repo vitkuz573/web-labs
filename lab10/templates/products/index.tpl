@@ -23,7 +23,7 @@
 						</a>
 						<div class="p-6">
 							<h5 class="text-gray-900 text-xl font-medium mb-2">{$product.name}</h5>
-							<p class="text-gray-700 text-base mb-4">{$product.description}</p>
+							<p class="text-gray-700 text-base mb-4">{mb_strimwidth($product.description, 0, 80, '...')}</p>
 							<p class="text-gray-700 text-base mb-4">{$product.price} ₽</p>
 
 							{if in_array($product.id, $smarty.session.cart) == false}

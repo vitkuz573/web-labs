@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 /**
  * @method static whereLogin(mixed $login)
  * @method static firstOrCreate(array $array)
+ * @method static find(mixed $id)
  */
 class User extends Model {
     protected $fillable = [
