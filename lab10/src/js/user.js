@@ -15,7 +15,9 @@ export function update() {
             'Content-type': 'application/json; charset=UTF-8'
         },
         body: JSON.stringify(formData)
-    }).then(response => response.json())
-        .then(data => console.log(data))
-        .catch(err => console.log(err))
+    }).then(response => {
+        return response.json()
+    }).then(data => {
+        alert(data['message'])
+    }).catch(err => console.log(err))
 }

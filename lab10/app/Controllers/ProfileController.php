@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Models\User;
 use SmartyException;
+use function App\Helpers\set_status;
 
 class ProfileController
 {
@@ -33,29 +34,46 @@ class ProfileController
         $address = $_PUT['address'];
         $password = trim($_PUT['password']);
         $password_confirmation = trim($_PUT['passwordConfirmation']);
-
-        $newPassword = null;
-
-        if ($password && ($password == $password_confirmation)) {
-            $newPassword = password_hash($password, PASSWORD_BCRYPT);
-        }
+        $current_password = trim($_PUT['currentPassword']);
 
         $user = User::find($_SESSION['user']['id']);
 
-        if ($newPassword) {
-            $user->password = $newPassword;
+        if (password_verify($current_password, $user['password'])) {
+            if ($password) {
+                if ($password === $password_confirmation) {
+                    $user->password = password_hash($password, PASSWORD_BCRYPT);
+                } else {
+                    echo set_status('Ошибка. Пароли не совпадают!');
+                    return;
+                }
+            }
+
+            if (!empty($first_name) && !preg_match('/\d+/', $first_name)) {
+                $user->first_name = $first_name;
+            } else {
+                echo set_status('Ошибка. Проверьте введенные значения!');
+                return;
+            }
+
+            if (!empty($last_name) && !preg_match('/\d+/', $last_name)) {
+                $user->last_name = $last_name;
+            } else {
+                echo set_status('Ошибка. Проверьте введенные значения!');
+                return;
+            }
+
+            $user->phone = $phone;
+            $user->address = $address;
+
+            $saved = $user->save();
+
+            if ($saved) {
+                $_SESSION['user']['last_name'] = $last_name;
+                $_SESSION['user']['phone'] = $phone;
+                $_SESSION['user']['address'] = $address;
+            }
+        } else {
+            echo set_status('Ошибка. Текущий пароль введен неверно!');
         }
-
-        $user->first_name = $first_name;
-        $user->last_name = $last_name;
-        $user->phone = $phone;
-        $user->address = $address;
-
-        $user->save();
-
-        $_SESSION['user']['first_name'] = $first_name;
-        $_SESSION['user']['last_name'] = $last_name;
-        $_SESSION['user']['phone'] = $phone;
-        $_SESSION['user']['address'] = $address;
     }
 }

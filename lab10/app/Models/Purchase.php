@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 /**
  * @method static whereOrderId(string $id)
+ * @method static create(array $array)
  */
 class Purchase extends Model {
     protected $fillable = [

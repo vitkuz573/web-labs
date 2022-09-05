@@ -90,3 +90,13 @@ if (!function_exists('upload_image')) {
         return $image_name;
     }
 }
+
+if (!function_exists('set_status')) {
+    function set_status(string $message, int $success = 0) : string
+    {
+        return json_encode([
+            'success' => $success,
+            'message' => $message,
+        ]);
+    }
+}

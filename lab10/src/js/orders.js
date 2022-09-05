@@ -2,7 +2,9 @@ export function add() {
     fetch('../orders', {
         method: 'POST',
     }).then(response => {
-        return response.text()
+        return response.json()
+    }).then(data => {
+        alert(data['message'])
     })
 }
 

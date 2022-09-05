@@ -3,7 +3,6 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 /**
  * @method static find(string $id)
@@ -19,6 +18,4 @@ class Product extends Model {
         'price',
         'in_stock',
     ];
-
-
 }

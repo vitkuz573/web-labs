@@ -108,6 +108,11 @@ class OrderController
 
             echo json_encode($resData);
             return;
+        } else {
+            $resData['success'] = 1;
+            $resData['message'] = 'Заказ успешно создан! Номер заказа: ' . $order->id;
+
+            echo json_encode($resData);
         }
 
         foreach ($_SESSION['saleCart'] as $item) {
@@ -117,7 +122,16 @@ class OrderController
                 'price' => $item['price'],
                 'amount' => $item['cnt'],
             ]);
+
+            $product = Product::find($item['id']);
+            $in_stock = $product->in_stock - $item['cnt'];
+            $product->update([
+                'in_stock' => $in_stock
+            ]);
         }
+
+        unset($_SESSION['cart']);
+        unset($_SESSION['saleCart']);
     }
 
     /**
@@ -135,6 +149,15 @@ class OrderController
             global $smarty;
 
             show_error_page($smarty, 404);
+        }
+
+        foreach ($order->purchases as $purchase) {
+            $product = $purchase->product;
+            $in_stock = $product->in_stock;
+
+            $product->update([
+                'in_stock' => $in_stock + $purchase->amount
+            ]);
         }
 
         $order->delete();
