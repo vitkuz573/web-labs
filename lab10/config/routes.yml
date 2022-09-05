@@ -4,9 +4,9 @@ cart_index:
     controller: App\Controllers\CartController::index
     methods: GET
 
-order_index:
+cart_order:
     path: /cart/order
-    controller: App\Controllers\OrderController::index
+    controller: App\Controllers\OrderController::preview
     methods: POST
 
 cart_store:
@@ -107,6 +107,11 @@ admin_order_index:
     controller: App\Controllers\AdminOrderController::index
 
 # Order routes
+order_index:
+    path: /orders
+    controller: App\Controllers\OrderController::index
+    methods: GET
+
 order_store:
     path: /orders
     controller: App\Controllers\OrderController::store

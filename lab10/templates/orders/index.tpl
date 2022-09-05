@@ -1,5 +1,5 @@
 {extends file="layout.tpl"}
-{block name=title}Заказ{/block}
+{block name=title}Заказы{/block}
 
 {block name=body}
     <div class="p-4 relative rounded-xl overflow-auto">
@@ -8,37 +8,32 @@
                 <thead>
                 <tr>
                     <th class="border-b font-medium p-4 pl-8 pt-0 pb-3 text-slate-400 text-left">ID</th>
-                    <th class="border-b font-medium p-4 pt-0 pb-3 text-slate-400 text-left">Наименование</th>
-                    <th class="border-b font-medium p-4 pr-8 pt-0 pb-3 text-slate-400 text-left">Количество</th>
-                    <th class="border-b font-medium p-4 pr-8 pt-0 pb-3 text-slate-400 text-left">Цена за единицу</th>
-                    <th class="border-b font-medium p-4 pr-8 pt-0 pb-3 text-slate-400 text-left">Стоимость</th>
+                    <th class="border-b font-medium p-4 pl-8 pt-0 pb-3 text-slate-400 text-left">Сумма</th>
+                    <th class="border-b font-medium p-4 pr-8 pt-0 pb-3 text-slate-400 text-left">Оплачено</th>
+                    <th class="border-b font-medium p-4 pr-8 pt-0 pb-3 text-slate-400 text-left">Создано</th>
+                    <th class="border-b font-medium p-4 pr-8 pt-0 pb-3 text-slate-400 text-left">Действия</th>
                 </tr>
                 </thead>
                 <tbody class="bg-white">
-                {foreach $order as $product}
-                    {$total_price = $total_price + $product.realPrice}
+                {foreach $orders as $order}
                     <tr>
+                        <td class="border-b border-slate-100 p-4 pl-8 text-slate-500">#{$order.id}</td>
+                        <td class="border-b border-slate-100 p-4 pl-8 text-slate-500">{$order.total_price} ₽</td>
                         <td class="border-b border-slate-100 p-4 pl-8 text-slate-500">
-                            <a href="../products/{$product.id}" class="text-blue-700">Товар #{$product.id}</a>
+                            {if $order.payment_at === null}
+                                <a href="#" class="text-blue-500">Перейти к оплате</a>
+                            {else}
+                                {$order.payment_at}
+                            {/if}
                         </td>
-                        <td class="border-b border-slate-100 p-4 text-slate-500">{$product.name}</td>
-                        <td class="border-b border-slate-100 p-4 pr-8 text-slate-500">{$product.cnt}</td>
-                        <td class="border-b border-slate-100 p-4 pr-8 text-slate-500">{$product.price} ₽</td>
-                        <td class="border-b border-slate-100 p-4 pr-8 text-slate-500">{$product.realPrice} ₽</td>
+                        <td class="border-b border-slate-100 p-4 pl-8 text-slate-500">{$order.created_at}</td>
+                        <td class="border-b border-slate-100 p-4 pl-8 text-slate-500">
+                            <a href="orders/{$order.id}" class="text-blue-500">Подробнее</a>
+                        </td>
                     </tr>
                 {/foreach}
                 </tbody>
             </table>
-        </div>
-
-        <div class="relative flex w-full rounded overflow-hidden shadow-lg my-2 bg-white">
-            <div class="px-6 py-4">
-                <p id="total_price">Итого: {$total_price} ₽</p>
-            </div>
-
-            <div class="absolute inset-y-0 right-0 p-2">
-                <button type="submit" class="h-full inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out" onclick="window.orders.add()">Создать заказ</button>
-            </div>
         </div>
     </div>
 {/block}

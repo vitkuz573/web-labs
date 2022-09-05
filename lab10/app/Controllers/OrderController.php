@@ -18,6 +18,17 @@ class OrderController
      */
     public function index() : void
     {
+        global $smarty;
+
+        $smarty->assign('orders', Order::whereUserId($_SESSION['user']['id'])->with('purchases.product')->get());
+        $smarty->display('orders/index.tpl');
+    }
+
+    /**
+     * @throws SmartyException
+     */
+    public function preview() : void
+    {
         $itemsIds = $_SESSION['cart'] ?? null;
 
         if (!$itemsIds) {
@@ -62,7 +73,7 @@ class OrderController
 
         $smarty->assign('order', $products_data);
         $smarty->assign('total_price', 0);
-        $smarty->display('orders/index.tpl');
+        $smarty->display('orders/preview.tpl');
     }
 
     /**
@@ -70,10 +81,13 @@ class OrderController
      */
     public function show() : void
     {
-        access_control('../../login');
-
         $id = get_last_uri_chunk($_SERVER['REQUEST_URI']);
         $order = Order::find($id);
+
+        if ($order->user->id != $_SESSION['user']['id']) {
+            header('Location: ../orders');
+            return;
+        }
 
         global $smarty;
 
@@ -131,7 +145,7 @@ class OrderController
      */
     public function destroy() : void
     {
-        access_control('../../login');
+        access_control('../login');
 
         $id = get_last_uri_chunk($_SERVER['REQUEST_URI']);
         $order = Order::find($id);
