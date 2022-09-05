@@ -8,6 +8,7 @@ use App\Models\Purchase;
 use SmartyException;
 use function App\Helpers\access_control;
 use function App\Helpers\get_last_uri_chunk;
+use function App\Helpers\set_status;
 use function App\Helpers\show_error_page;
 
 class OrderController
@@ -90,10 +91,7 @@ class OrderController
         $cart = $_SESSION['saleCart'] ?? null;
 
         if (!$cart) {
-            $resData['success'] = 0;
-            $resData['message'] = 'Нет товаров для заказа!';
-
-            echo json_encode($resData);
+            echo set_status('Нет товаров для заказа!');
             return;
         }
 
@@ -103,16 +101,10 @@ class OrderController
         ]);
 
         if (!$order->id) {
-            $resData['success'] = 0;
-            $resData['message'] = 'Ошибка создания заказа!';
-
-            echo json_encode($resData);
+            echo set_status('Ошибка создания заказа!');
             return;
         } else {
-            $resData['success'] = 1;
-            $resData['message'] = 'Заказ успешно создан! Номер заказа: ' . $order->id;
-
-            echo json_encode($resData);
+            echo set_status('Заказ успешно создан! Номер заказа: ' . $order->id, 1);
         }
 
         foreach ($_SESSION['saleCart'] as $item) {
